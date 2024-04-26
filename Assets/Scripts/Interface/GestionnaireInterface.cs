@@ -5,6 +5,17 @@ using TMPro;
 public class GestionnaireInterface : MonoBehaviour
 {
     [SerializeField] private Button _boutonDemarrer;
+    [SerializeField] private GameObject fermierMale;
+    [SerializeField] private GameObject fermierFemale;
+    [SerializeField] private TMP_Dropdown choixPersonnageDropDown;
+
+    enum Personnage
+    {
+        Fermier,
+        Fermiere
+    }
+
+    private Personnage personnage;
 
     enum Difficulte
     {
@@ -33,6 +44,8 @@ public class GestionnaireInterface : MonoBehaviour
 
         difficulte = Difficulte.Facile;
         MettreAJour(valeursFacile);
+        personnage = Personnage.Fermier;
+        fermierFemale.SetActive(false);
     }
 
     void Update()
@@ -54,6 +67,23 @@ public class GestionnaireInterface : MonoBehaviour
                 break;
             case Difficulte.Difficile:
                 MettreAJour(valeursDifficile);
+                break;
+        }
+    }
+
+    public void ChangerPersonnage()
+    {
+        personnage = (Personnage)choixPersonnageDropDown.value;
+
+        switch(personnage)
+        {
+            case Personnage.Fermier:
+                fermierMale.SetActive(true);
+                fermierFemale.SetActive(false);
+                break;
+            case Personnage.Fermiere:
+                fermierMale.SetActive(false);
+                fermierFemale.SetActive(true);
                 break;
         }
     }
