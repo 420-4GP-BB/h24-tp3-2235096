@@ -13,18 +13,21 @@ public class GameManager : MonoBehaviour
     private EnergieJoueur _energieJoueur;
     private ChouMesh3D[] _chous;
     public int NumeroJour = 1;
+    [SerializeField] private GameObject prefabFermier;
+    [SerializeField] private GameObject prefabFermiere;
 
     void Start()
     {
-        _joueur = GameObject.Find("Joueur").GetComponent<ComportementJoueur>();
+
+        _joueur = GameObject.Find(ParametresParties.Instance.ChoixPersonnage).GetComponent<ComportementJoueur>();
         _inventaireJoueur = _joueur.GetComponent<Inventaire>();
         _energieJoueur = _joueur.GetComponent<EnergieJoueur>();
         _chous = FindObjectsByType<ChouMesh3D>(FindObjectsSortMode.None);
 
         // Patron de conception: Observateur
         FindObjectOfType<Soleil>().OnJourneeTerminee += NouvelleJournee;
-
         _energieJoueur.OnEnergieVide += EnergieVide;
+        
     }
 
     void NouvelleJournee()
@@ -40,6 +43,34 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        string personnageChoisi = ParametresParties.Instance.ChoixPersonnage;
+        switch (personnageChoisi)
+        {
+            case "Joueur":
+                prefabFermiere.SetActive(false);
+                prefabFermier.SetActive(true);
+                break;
+            case "Joueuse":
+                prefabFermiere.SetActive(true);
+                prefabFermier.SetActive(false);
+                break;
+        }
+
+        //if (personnageChoisi == "Fermiere")
+        //{
+        //    //gameObjectJoueur.transform.GetChild(0).gameObject.SetActive(false);
+        //    prefabFermiere.SetActive(true);
+        //    prefabFermier.SetActive(false);
+        //    //gameObjectJoueur.transform.GetChild(1).gameObject.SetActive(true);
+        //}
+        //else 
+        //{
+        //    //gameObjectJoueur.transform.GetChild(0).gameObject.SetActive(true);
+        //    prefabFermiere.SetActive(false);
+        //    prefabFermier.SetActive(true);
+        //    //gameObjectJoueur.transform.GetChild(1).gameObject.SetActive(true);
+        //}
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene("MenuConfiguration");

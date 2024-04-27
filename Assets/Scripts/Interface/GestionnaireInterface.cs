@@ -51,6 +51,7 @@ public class GestionnaireInterface : MonoBehaviour
     void Update()
     {
         _boutonDemarrer.interactable = nomJoueur.text != string.Empty;
+        ChangerPersonnage();
     }
 
     public void ChangerDifficulte()
@@ -73,17 +74,21 @@ public class GestionnaireInterface : MonoBehaviour
 
     public void ChangerPersonnage()
     {
+        //print(choixPersonnageDropDown.value);
+        
         personnage = (Personnage)choixPersonnageDropDown.value;
-
-        switch(personnage)
+        print(personnage);
+        switch (personnage)
         {
             case Personnage.Fermier:
                 fermierMale.SetActive(true);
                 fermierFemale.SetActive(false);
+                ParametresParties.Instance.ChoixPersonnage = "Joueur";
                 break;
             case Personnage.Fermiere:
                 fermierMale.SetActive(false);
                 fermierFemale.SetActive(true);
+                ParametresParties.Instance.ChoixPersonnage = "Joueuse";
                 break;
         }
     }
