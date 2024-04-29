@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EtatNormal : EtatJoueur
@@ -44,7 +45,8 @@ public class EtatNormal : EtatJoueur
             if (actionnable != null &&
                 actionnable.GetComponent<IActionnable>().Permis(Sujet))
             {
-                Sujet.ChangerEtat(new EtatAction(Sujet, actionnable));
+                //Sujet.ChangerEtat(new EtatAction(Sujet, actionnable));
+                Sujet.StartCoroutine(GraduelleRotationJoueur(actionnable));
             }
         }
         else
@@ -79,7 +81,27 @@ public class EtatNormal : EtatJoueur
         }
     }
 
+    private IEnumerator GraduelleRotationJoueur(GameObject actionnable)
+    {
+        Vector3 directionRotation = Vector3.Normalize(actionnable.transform.position - Sujet.transform.position);
+        Quaternion rotationCible = Quaternion.LookRotation(directionRotation);
+        float pourcentageRotation = 0.0f;
+
+        while (pourcentageRotation < 0.25f)
+        {
+            pourcentageRotation += Time.deltaTime;
+            Quaternion rotation = Quaternion.Slerp(Sujet.transform.rotation, rotationCible, pourcentageRotation);
+            Sujet.transform.rotation = rotation;
+            yield return new WaitForEndOfFrame();
+        }
+
+        Sujet.ChangerEtat(new EtatAction(Sujet, actionnable));
+    }
+
+    
+
     public override void Exit()
     {
+
     }
 }
