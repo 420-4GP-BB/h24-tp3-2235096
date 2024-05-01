@@ -73,11 +73,8 @@ public class GestionnaireInterface : MonoBehaviour
     }
 
     public void ChangerPersonnage()
-    {
-        //print(choixPersonnageDropDown.value);
-        
+    {   
         personnage = (Personnage)choixPersonnageDropDown.value;
-        print(personnage);
         switch (personnage)
         {
             case Personnage.Fermier:

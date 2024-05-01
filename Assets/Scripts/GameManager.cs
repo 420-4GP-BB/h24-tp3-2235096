@@ -56,20 +56,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        //if (personnageChoisi == "Fermiere")
-        //{
-        //    //gameObjectJoueur.transform.GetChild(0).gameObject.SetActive(false);
-        //    prefabFermiere.SetActive(true);
-        //    prefabFermier.SetActive(false);
-        //    //gameObjectJoueur.transform.GetChild(1).gameObject.SetActive(true);
-        //}
-        //else 
-        //{
-        //    //gameObjectJoueur.transform.GetChild(0).gameObject.SetActive(true);
-        //    prefabFermiere.SetActive(false);
-        //    prefabFermier.SetActive(true);
-        //    //gameObjectJoueur.transform.GetChild(1).gameObject.SetActive(true);
-        //}
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
