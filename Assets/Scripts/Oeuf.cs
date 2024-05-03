@@ -4,7 +4,7 @@ public class Oeuf : MonoBehaviour, IRamassable
 {
     public void Ramasser(Inventaire inventaireJoueur)
     {
-        inventaireJoueur.Bois++;
+        inventaireJoueur.Oeuf++;
         Destroy(gameObject);
     }
 
