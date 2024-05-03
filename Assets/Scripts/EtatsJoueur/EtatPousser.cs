@@ -28,7 +28,7 @@ public class EtatPousser : EtatJoueur
     public override void Handle()
     {
         _tempsDePousser += Time.deltaTime;
-        if (_tempsDePousser >= 2f && !_estPousser)
+        if (_tempsDePousser >= 1f && !_estPousser)
         {
             _poussable.Pousser(Inventaire, Sujet);
             _estPousser = true;

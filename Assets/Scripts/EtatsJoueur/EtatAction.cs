@@ -37,7 +37,7 @@ public class EtatAction : EtatJoueur
     public override void Handle()
     {
         float distance = Vector3.Distance(pointDestination, Sujet.transform.position);
-        if (!_navMeshAgent.pathPending && distance <= 0.3f)
+        if (!_navMeshAgent.pathPending && distance <= 0.5f)
         {
             _navMeshAgent.enabled = false;
             pointDestination.y = Sujet.transform.position.y;
