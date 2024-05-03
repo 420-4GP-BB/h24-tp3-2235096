@@ -8,20 +8,38 @@ public class Arbres : MonoBehaviour, IPousser
     private float dureeTombee = 2f;
     private float tempsPassee = 0f;
     private float tempsDescente = 0.5f;
+    private bool arbreTombe = false;
 
+    private void Update()
+    {
+        if (arbreTombe)
+        {
+            float descendreArbre = Time.deltaTime * tempsDescente;
+            transform.position += Vector3.down * descendreArbre;
+
+            tempsPassee += Time.deltaTime;
+            if (tempsPassee >= tempsDescente)
+            {
+                Destroy(gameObject);
+                SpawnBuche();
+            }
+            
+        }
+    }
+
+    private void SpawnBuche()
+    {
+        GameObject unBuche = Instantiate(_prefabBuche, transform.position, Quaternion.identity);
+        unBuche.transform.rotation = Quaternion.Euler(90, 0, 0);
+        Vector3 rePositionnerBuche = Vector3.up * 0.5f;
+        unBuche.transform.position += rePositionnerBuche;
+    }
 
     public void Pousser(Inventaire inventaireJoueur, ComportementJoueur sujet)
     {
         StartCoroutine(TomberArbre(sujet));
-        //prefabArbre.SetActive(false);
-        //gameObject.AddComponent<ChouCroissant>();
-        //Destroy(this);
     }
 
-    //public void Ramasser(Inventaire inventaireJoueur)
-    //{
-    //    inventaireJoueur.Bois++;
-    //}
 
     private IEnumerator TomberArbre(ComportementJoueur sujet)
     {
@@ -35,12 +53,8 @@ public class Arbres : MonoBehaviour, IPousser
 
         yield return new WaitForSeconds(1f);
 
-        GameObject unBuche = Instantiate(_prefabBuche, transform.position, Quaternion.identity);
-        unBuche.transform.rotation = Quaternion.Euler(90, 0, 0);
-        Vector3 rePositionnerBuche = Vector3.up * 0.28f;
-        unBuche.transform.position += rePositionnerBuche;
-        //Il faut faire le code pour descendre le arbre graduellement 
-        Destroy(gameObject);
+        arbreTombe = true;
+        tempsPassee = 0f;
     }
 
     public EtatJoueur EtatAUtiliser(ComportementJoueur sujet)
