@@ -32,7 +32,7 @@ public class MouvementPoulet : MonoBehaviour
         // Position initiale sur la ferme
         _agent.enabled = false;
         var point = _pointsDeDeplacement[Random.Range(0, _pointsDeDeplacement.Length)];
-        transform.position = point.transform.position;
+        //transform.position = point.transform.position;
         _agent.enabled = true;
 
         gameObject.GetComponent<PondreOeufs>().enabled = true;
