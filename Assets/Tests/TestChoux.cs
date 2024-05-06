@@ -100,8 +100,29 @@ public class TestChoux
         // Faites un :         yield return null;
         // après chaque appel de la méthode JourneePassee(); du composant ChouCroissant, question de simuler
         // qu'au moins 1 frame s'écoule entre chaque appel
+
+        // ARRANGE:
+        var emplacement = chou.GetComponent<EmplacementChouVide>();
+
+        // ACT
+        inventaire.Graines = 1;
+        emplacement.Planter(inventaire);
         yield return null;
-        Assert.IsTrue(1 == 2);
+
+        var chouCroissant = chou.GetComponent<ChouCroissant>();
+        yield return null;
+
+        //Trois jours
+        chouCroissant.JourneePassee();
+        yield return null;
+
+        chouCroissant.JourneePassee();
+        yield return null;
+
+        chouCroissant.JourneePassee();
+        yield return null;
+
+        Assert.IsTrue(chouCroissant.Pret);
     }
 
     [UnityTest]
