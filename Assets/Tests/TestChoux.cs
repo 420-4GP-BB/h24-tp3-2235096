@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
@@ -106,6 +107,7 @@ public class TestChoux
 
         // ACT
         inventaire.Graines = 1;
+        inventaire.Choux = 0;
         emplacement.Planter(inventaire);
         yield return null;
 
@@ -130,7 +132,26 @@ public class TestChoux
     {
         // TODO: Vérifier qu'on peut replanter un deuxième chou sur le même emplacement
         // après l'avoir cueilli
-        yield return null;
-        Assert.IsTrue(1 == 2);
+        
+        inventaire.Graines= 2;
+        inventaire.Choux= 0;
+
+        for (int i = 0; i < 2; i++)
+        {
+            chou.GetComponent<EmplacementChouVide>().Planter(inventaire);
+            yield return null;
+            var chouCroissant = chou.GetComponent<ChouCroissant>();
+
+            for(int j= 0; j < 3; j++)
+            {
+                chouCroissant.JourneePassee();
+                yield return null;
+            }
+
+            chou.GetComponent<ChouPret>().Ramasser(inventaire);
+            yield return null;
+        }
+        Assert.AreEqual(inventaire.Graines, 0);
     }
+
 }
