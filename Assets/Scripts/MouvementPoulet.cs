@@ -39,7 +39,7 @@ public class MouvementPoulet : MonoBehaviour
         transform.rotation = _joueur.transform.rotation;
 
         _agent.enabled = true;
-        gameObject.GetComponent<PondreOeufs>().enabled = true;
+        
     }
 
     void ChoisirDestinationAleatoire()
@@ -77,6 +77,7 @@ public class MouvementPoulet : MonoBehaviour
             _suivreJoueur = false;
             _agent.speed = 0.25f;
             ChoisirDestinationAleatoire();
+            gameObject.GetComponent<PondreOeufs>().enabled = true;
         }
     }
 }
