@@ -30,6 +30,7 @@ public class EtatAction : EtatJoueur
         Sujet.transform.rotation = Quaternion.LookRotation(direction);
         Vector3 pointProche = _destination.GetComponent<Collider>().ClosestPoint(Sujet.transform.position);
         pointDestination = pointProche - direction.normalized * 0.3f;
+
         _navMeshAgent.SetDestination(pointDestination);
     }
 

@@ -21,7 +21,7 @@ public class Utilitaires
         foreach (var hit in Physics.RaycastAll(ray))
         {
             var actionnable = hit.collider.gameObject.GetComponent<IActionnable>();
-            if (actionnable != null)
+            if (actionnable != null && !hit.collider.CompareTag("ArbreCollation"))
                 return hit.collider.gameObject;
         }
 
