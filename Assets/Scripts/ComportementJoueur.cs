@@ -12,7 +12,6 @@ public class ComportementJoueur : MonoBehaviour
     [SerializeField] private float _vitesseDeplacement;
     [SerializeField] private float _vitesseRotation;
     [SerializeField] private float _facteurCourse;
-
     public float VitesseDeplacement
     {
         get { return _vitesseDeplacement; }
