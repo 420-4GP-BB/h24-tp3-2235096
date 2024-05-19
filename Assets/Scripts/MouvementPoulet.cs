@@ -15,6 +15,8 @@ public class MouvementPoulet : MonoBehaviour
 
     private float distanceJoueurPoule = 1.5f;
 
+    public bool spawnDerriereJoueur = false;
+
     void Start()
     {
         _zoneRelachement = UnityEngine.GameObject.Find("NavMeshObstacle");
@@ -34,9 +36,18 @@ public class MouvementPoulet : MonoBehaviour
         // Position initiale sur la ferme
         _agent.enabled = false;
 
-        Vector3 directionAvecJoueur = Quaternion.AngleAxis(_angleDerriere, Vector3.up) * _joueur.transform.forward;
-        transform.position = _joueur.transform.position - directionAvecJoueur;
-        transform.rotation = _joueur.transform.rotation;
+        if (!spawnDerriereJoueur)
+        {
+            Vector3 directionAvecJoueur = Quaternion.AngleAxis(_angleDerriere, Vector3.up) * _joueur.transform.forward;
+            transform.position = _joueur.transform.position - directionAvecJoueur;
+            transform.rotation = _joueur.transform.rotation;
+        }
+        else
+        {
+            var point = _pointsDeDeplacement[Random.Range(0, _pointsDeDeplacement.Length)];
+            transform.position = point.transform.position;
+        }
+        
 
         _agent.enabled = true;
         
