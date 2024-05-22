@@ -24,7 +24,7 @@ public class ArbreCollations : MonoBehaviour
                 GameObject collationPrefab = lesCollations[Random.Range(0, lesCollations.Length)];
                 collationTombee = Instantiate(collationPrefab, positionSpawnCollation, Quaternion.identity);
             }
-            yield return new WaitForSecondsRealtime(30);
+            yield return new WaitForSeconds(30);
         }
     }
 }
