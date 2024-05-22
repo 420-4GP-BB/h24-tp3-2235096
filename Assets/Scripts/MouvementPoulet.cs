@@ -13,7 +13,7 @@ public class MouvementPoulet : MonoBehaviour
 
     private GameObject[] _pointsDeDeplacement;
 
-    private float distanceJoueurPoule = 1.5f;
+    private float distanceJoueurPoule = 3f;
 
     public bool spawnDerriereJoueur = false;
 
