@@ -18,12 +18,13 @@ public class ArbreCollations : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(30f);
+            
             if (collationTombee == null)
             {
                 GameObject collationPrefab = lesCollations[Random.Range(0, lesCollations.Length)];
                 collationTombee = Instantiate(collationPrefab, positionSpawnCollation, Quaternion.identity);
             }
+            yield return new WaitForSecondsRealtime(30);
         }
     }
 }
