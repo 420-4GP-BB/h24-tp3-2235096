@@ -42,13 +42,7 @@ public class MouvementPoulet : MonoBehaviour
             transform.position = _joueur.transform.position - directionAvecJoueur;
             transform.rotation = _joueur.transform.rotation;
         }
-        else
-        {
-            var point = _pointsDeDeplacement[Random.Range(0, _pointsDeDeplacement.Length)];
-            transform.position = point.transform.position;
-        }
         
-
         _agent.enabled = true;
         
     }
