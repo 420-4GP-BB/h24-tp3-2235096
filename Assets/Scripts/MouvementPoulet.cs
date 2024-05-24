@@ -17,8 +17,13 @@ public class MouvementPoulet : MonoBehaviour
 
     public bool spawnDerriereJoueur = false;
 
+    //Code pour que le poule sort dehors que la nuit
+    //Soleil soleil;
+    //[SerializeField] private GameObject pointDehorsMaison;
+
     void Start()
     {
+        //soleil = FindObjectOfType<Soleil>();
         _zoneRelachement = UnityEngine.GameObject.Find("NavMeshObstacle");
         _joueur = GameObject.Find(ParametresParties.Instance.ChoixPersonnage).GetComponent<ComportementJoueur>();
         _suivreJoueur = true;
@@ -29,6 +34,7 @@ public class MouvementPoulet : MonoBehaviour
         _pointsDeDeplacement = GameObject.FindGameObjectsWithTag("PointsPoulet");
         _animator.SetBool("Walk", true);
         Initialiser();
+        
     }
 
     void Initialiser()
@@ -55,6 +61,17 @@ public class MouvementPoulet : MonoBehaviour
 
     void Update()
     {
+        //Code pour que le poule sort dehors que la nuit
+
+        //if (soleil.EstNuitRenard)
+        //{
+        //    pointDehorsMaison.gameObject.SetActive(true);
+        //}
+        //else
+        //{
+        //    pointDehorsMaison.gameObject.SetActive(false);
+        //}
+
         if (_suivreJoueur)
         {
             Vector3 distance = _joueur.transform.position - transform.position;

@@ -37,6 +37,7 @@ public class Soleil : MonoBehaviour
     /// Indique si on est présentement pendant la nuit (entre 21h et 5h am)
     /// </summary>
     public bool EstNuit => ProportionRestante >= progression21h || ProportionRestante <= progression5h;
+    public bool EstNuitRenard => ProportionRestante >= progression21hRenard || ProportionRestante <= progression8hRenard;
 
     [Header("Rotation pour changer graduellement la direction des ombres")]
     [SerializeField] private Vector3 rotationDepart;
@@ -58,6 +59,9 @@ public class Soleil : MonoBehaviour
     private const float progression8h = 8.0f / 24;
     private const float progression12h = 12.0f / 24;
     private const float progression18h = 18.0f / 24;
+
+    private const float progression21hRenard = 16.0f / 24;
+    private const float progression8hRenard = 3.0f / 24;
 
     void Awake()
     {

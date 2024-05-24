@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public int NumeroJour = 1;
     [SerializeField] private GameObject prefabFermier;
     [SerializeField] private GameObject prefabFermiere;
+    [SerializeField] private GameObject prefabRenard;
+    private GameObject unRenard;
 
     void Start()
     {
@@ -27,7 +30,7 @@ public class GameManager : MonoBehaviour
         // Patron de conception: Observateur
         FindObjectOfType<Soleil>().OnJourneeTerminee += NouvelleJournee;
         _energieJoueur.OnEnergieVide += EnergieVide;
-        
+
     }
 
     void NouvelleJournee()
@@ -73,6 +76,15 @@ public class GameManager : MonoBehaviour
 
         // L'?tat du joueur peut affecter le passage du temps (ex.: Dodo: tout va vite, menus: le temps est stopp?, etc)
         Time.timeScale *= _joueur.GetComponent<ComportementJoueur>().MultiplicateurScale;
+
+        if (_soleil.EstNuitRenard && unRenard == null)
+            {
+                unRenard = Instantiate(prefabRenard);
+            }
+            else if (!_soleil.EstNuitRenard && unRenard != null) 
+            {
+                Destroy(unRenard);
+            }
     }
 
     /// <summary>
@@ -87,4 +99,20 @@ public class GameManager : MonoBehaviour
             "Un loup passe et vous d?guste en guise de d?ner. Meilleure chance la prochaine partie!");
         Time.timeScale = 0;
     }
+
+    //private IEnumerator SpawnRenard()
+    //{
+    //    //while (true)
+    //    //{
+    //    //    if (_soleil.EstNuit && unRenard == null)
+    //    //    {
+    //    //        unRenard = Instantiate(prefabRenard);
+    //    //    }
+    //    //    else if (!_soleil.EstNuit && unRenard != null) 
+    //    //    {
+    //    //        Destroy(unRenard);
+    //    //    }
+    //    //    yield return null;
+    //    //}
+    //}
 }
