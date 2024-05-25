@@ -45,7 +45,7 @@ public class EtatNormal : EtatJoueur
             if (actionnable != null &&
                 actionnable.GetComponent<IActionnable>().Permis(Sujet))
             {
-                //Sujet.ChangerEtat(new EtatAction(Sujet, actionnable));
+                //Commence avec une rotation graduelle
                 Sujet.StartCoroutine(GraduelleRotationJoueur(actionnable));
             }
         }
@@ -81,6 +81,7 @@ public class EtatNormal : EtatJoueur
         }
     }
 
+    //Pour faire tourner le joueur graduellement
     private IEnumerator GraduelleRotationJoueur(GameObject actionnable)
     {
         Vector3 directionRotation = Vector3.Normalize(actionnable.transform.position - Sujet.transform.position);
