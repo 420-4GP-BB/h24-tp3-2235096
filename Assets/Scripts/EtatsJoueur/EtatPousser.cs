@@ -27,6 +27,8 @@ public class EtatPousser : EtatJoueur
     public override void Handle()
     {
         _tempsDePousser += Time.deltaTime;
+
+        //Condition pour voir si le temps est passée et si ca pas etait pousser
         if (_tempsDePousser >= 1f && !_estPousser)
         {
             _poussable.Pousser(Inventaire, Sujet);
