@@ -20,6 +20,7 @@ public class Oeuf : MonoBehaviour, IRamassable
     {
         joursPassee++;
 
+        //Si ca fait 3 jours, alors ca entre dans condition
         if (joursPassee >= nbreJournees)
         {
             float ran = Random.Range(0f, 1f);
