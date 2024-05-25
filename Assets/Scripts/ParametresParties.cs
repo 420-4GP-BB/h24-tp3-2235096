@@ -11,6 +11,8 @@ public class ParametresParties
 
     public string ChoixPersonnage { get; set; } = "Joueur";
 
+    //public string TypeForet { get; set; }
+
     ///// <summary>
     ///// Nombre de jours nécessaires à un chou pour être prêts
     ///// 0 = le chou est déjà prêt dès qu'on le plante

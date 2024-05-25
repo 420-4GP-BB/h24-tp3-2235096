@@ -8,6 +8,7 @@ public class GestionnaireInterface : MonoBehaviour
     [SerializeField] private GameObject fermierMale;
     [SerializeField] private GameObject fermierFemale;
     [SerializeField] private TMP_Dropdown choixPersonnageDropDown;
+    //[SerializeField] private TMP_Dropdown choixForetDropDown;
 
     enum Personnage
     {
@@ -25,6 +26,14 @@ public class GestionnaireInterface : MonoBehaviour
     }
 
     private Difficulte difficulte;
+
+    //enum Foret
+    //{
+    //    Rangs,
+    //    Hasard,
+    //    Simuler
+    //}
+    //private Foret foret;
 
     [SerializeField] private TMP_InputField nomJoueur;
     [SerializeField] private TMP_Text presentation;
@@ -46,6 +55,9 @@ public class GestionnaireInterface : MonoBehaviour
         MettreAJour(valeursFacile);
         personnage = Personnage.Fermier;
         fermierFemale.SetActive(false);
+
+        //foret = Foret.Rangs;
+        //choixForetDropDown.onValueChanged.AddListener(delegate { ChoisirTypeForet(); });
     }
 
     void Update()
@@ -89,6 +101,25 @@ public class GestionnaireInterface : MonoBehaviour
                 break;
         }
     }
+
+    //Pour Instancier des arbres
+
+    //public void ChoisirTypeForet()
+    //{
+    //    foret = (Foret)choixForetDropDown.value;
+    //    switch (foret)
+    //    {
+    //        case Foret.Rangs:
+    //            ParametresParties.Instance.TypeForet = "Grille";
+    //            break;
+    //        case Foret.Hasard:
+    //            ParametresParties.Instance.TypeForet = "Hasard";
+    //            break;
+    //        case Foret.Simuler:
+    //            ParametresParties.Instance.TypeForet = "Simuler";
+    //            break;
+    //    }
+    //}
 
     public void DemarrerPartie()
     {

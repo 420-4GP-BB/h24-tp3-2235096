@@ -2621,8 +2621,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1447052500}
-        m_TargetAssemblyTypeName: GestionnaireInterface, Assembly-CSharp
-        m_MethodName: ChangerDifficulte
+        m_TargetAssemblyTypeName: GestionnaireInterface, NewAssembly
+        m_MethodName: ChoisirTypeForet
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5203,6 +5203,7 @@ MonoBehaviour:
   fermierMale: {fileID: 1329161592}
   fermierFemale: {fileID: 281948601}
   choixPersonnageDropDown: {fileID: 1777797261}
+  choixForetDropDown: {fileID: 808848223}
   nomJoueur: {fileID: 1294810909}
   presentation: {fileID: 2094815833}
   valeursFacile: c800000005000000050000000300000005000000

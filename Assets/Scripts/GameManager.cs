@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject prefabFermiere;
     [SerializeField] private GameObject prefabRenard;
     private GameObject unRenard;
+    
 
     void Start()
     {
@@ -99,20 +100,4 @@ public class GameManager : MonoBehaviour
             "Un loup passe et vous d?guste en guise de d?ner. Meilleure chance la prochaine partie!");
         Time.timeScale = 0;
     }
-
-    //private IEnumerator SpawnRenard()
-    //{
-    //    //while (true)
-    //    //{
-    //    //    if (_soleil.EstNuit && unRenard == null)
-    //    //    {
-    //    //        unRenard = Instantiate(prefabRenard);
-    //    //    }
-    //    //    else if (!_soleil.EstNuit && unRenard != null) 
-    //    //    {
-    //    //        Destroy(unRenard);
-    //    //    }
-    //    //    yield return null;
-    //    //}
-    //}
 }
