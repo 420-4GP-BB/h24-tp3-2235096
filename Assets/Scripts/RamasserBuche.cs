@@ -6,6 +6,7 @@ public class RamasserBuche : MonoBehaviour, IRamassable
 {
     public void Ramasser(Inventaire inventaireJoueur)
     {
+        //Ajoute le buche dans le inventaire
         inventaireJoueur.Bois++;
         Destroy(gameObject);
     }
