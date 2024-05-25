@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        //Pour choisir le joueur dans menu
         string personnageChoisi = ParametresParties.Instance.ChoixPersonnage;
         switch (personnageChoisi)
         {
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
         // L'?tat du joueur peut affecter le passage du temps (ex.: Dodo: tout va vite, menus: le temps est stopp?, etc)
         Time.timeScale *= _joueur.GetComponent<ComportementJoueur>().MultiplicateurScale;
 
+        //Pour faire spawn le renard a 21h et détruire à 8h
         if (_soleil.EstNuitRenard && unRenard == null)
             {
                 unRenard = Instantiate(prefabRenard);

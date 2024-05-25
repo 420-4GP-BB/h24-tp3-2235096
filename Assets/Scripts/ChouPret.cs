@@ -17,7 +17,7 @@ public class ChouPret : MonoBehaviour, IRamassable
         _chouMesh3D.CacherObjets();
         inventaireJoueur.Choux++;
         Destroy(this);
-        //Pour replanter a meme place
+        //Pour replanter à meme place
         gameObject.AddComponent<EmplacementChouVide>();
     }
 
