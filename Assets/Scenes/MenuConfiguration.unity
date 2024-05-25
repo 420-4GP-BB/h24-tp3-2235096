@@ -2619,19 +2619,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1447052500}
-        m_TargetAssemblyTypeName: GestionnaireInterface, NewAssembly
-        m_MethodName: ChoisirTypeForet
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &808848224
 MonoBehaviour:
@@ -5203,7 +5191,6 @@ MonoBehaviour:
   fermierMale: {fileID: 1329161592}
   fermierFemale: {fileID: 281948601}
   choixPersonnageDropDown: {fileID: 1777797261}
-  choixForetDropDown: {fileID: 808848223}
   nomJoueur: {fileID: 1294810909}
   presentation: {fileID: 2094815833}
   valeursFacile: c800000005000000050000000300000005000000
