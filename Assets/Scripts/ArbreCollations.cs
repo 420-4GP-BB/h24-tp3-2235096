@@ -14,6 +14,7 @@ public class ArbreCollations : MonoBehaviour
         StartCoroutine(SpawnCollationArbre());
     }
 
+    //Pour faire spawn une collation chaque 30 secondes
     private IEnumerator SpawnCollationArbre()
     {
         while (true)
