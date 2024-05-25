@@ -39,11 +39,12 @@ public class MouvementPoulet : MonoBehaviour
 
     void Initialiser()
     {
-        // Position initiale sur la ferme
         _agent.enabled = false;
 
+        
         if (!spawnDerriereJoueur)
         {
+            //Pour que les poules suivent le joueur
             Vector3 directionAvecJoueur = Quaternion.AngleAxis(_angleDerriere, Vector3.up) * _joueur.transform.forward;
             transform.position = _joueur.transform.position - directionAvecJoueur;
             transform.rotation = _joueur.transform.rotation;
@@ -74,8 +75,9 @@ public class MouvementPoulet : MonoBehaviour
 
         if (_suivreJoueur)
         {
+            //Pour que les poules ne pousse pas le joueur
             Vector3 distance = _joueur.transform.position - transform.position;
-            if (distance.magnitude > distanceJoueurPoule)
+            if (distance.magnitude > distanceJoueurPoule) //Source: aidé par chatgpt
             {
                 _agent.speed = 4f;
                 _agent.SetDestination(_joueur.transform.position);
