@@ -12,8 +12,10 @@ public class Arbres : MonoBehaviour, IPousser
 
     private void Update()
     {
+
         if (arbreTombe)
         {
+            //Pour faire l'animation de arbre qui va sous terre
             float descendreArbre = Time.deltaTime * tempsDescente;
             transform.position += Vector3.down * descendreArbre;
 
@@ -27,6 +29,7 @@ public class Arbres : MonoBehaviour, IPousser
         }
     }
 
+    //Pour faire apparaitre un buche après que l'arbre tombe et disparait
     private void SpawnBuche()
     {
         GameObject unBuche = Instantiate(_prefabBuche, transform.position, Quaternion.identity);
@@ -40,7 +43,7 @@ public class Arbres : MonoBehaviour, IPousser
         StartCoroutine(TomberArbre(sujet));
     }
 
-
+    //Coroutine pour tomber l'arbre
     private IEnumerator TomberArbre(ComportementJoueur sujet)
     {
         float vitesseTombee = 90.0f / dureeTombee;
