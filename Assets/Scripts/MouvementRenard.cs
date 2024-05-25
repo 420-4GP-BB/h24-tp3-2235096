@@ -48,34 +48,24 @@ public class MouvementRenard : MonoBehaviour
     {
         if (unPoule != null)
         {
+            //Pour faire déplacer le renard vers la poule
             _agent.SetDestination(unPoule.transform.position);
-            
-            if (Vector3.Distance(transform.position, unPoule.transform.position) <= distanceAttraper)
+
+            if (Vector3.Distance(transform.position, unPoule.transform.position) <= distanceAttraper) 
             {
                 Destroy(unPoule);
                 unPoule = null;
-
-                //Source: Aidé par chatgpt
-                GameObject autrePoule = ChercherPoule();
-
-                if (autrePoule != null)
-                {
-                    unPoule = autrePoule;
-                }
-                else
-                {
-                    ChoisirDestinationAleatoire();
-                }
             }
         }
         else
         {
-            GameObject autrePoule = ChercherPoule();
+            
+            GameObject autrePoule = ChercherPoule(); //Source: Aidé par chatgpt
 
+            //Si renard trouve un autre poule, il le suit
             if (autrePoule != null)
             {
                 unPoule = autrePoule;
-
             }
             else if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
             {
@@ -94,6 +84,7 @@ public class MouvementRenard : MonoBehaviour
 
     GameObject ChercherPoule()
     {
+        //Pour chercher les poules
         GameObject[] desPoules = GameObject.FindGameObjectsWithTag("Poule");
 
         foreach (GameObject poule in desPoules)
